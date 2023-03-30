@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import TradieForm from "../components/TradieForm";
+import CustomerForm from "../components/CustomerForm";
+
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -34,6 +38,19 @@ const theme = createTheme();
 
 export default function SignUp() {
   const [account_type, setAccountType] = React.useState('');
+
+  const [customerContentVisible, setCustomerContentVisible] = useState(false);
+  const [tradieContentVisible, setTradieContentVisible] = useState(false);
+
+  
+  useEffect(() => {
+    account_type === "Customer"
+      ? setCustomerContentVisible(true)
+      : setCustomerContentVisible(false);
+    account_type === "Tradie"
+      ? setTradieContentVisible(true)
+      : setTradieContentVisible(false);
+  }, [account_type]);
 
   const handleChange = (event) => {
     setAccountType(event.target.value);
@@ -72,7 +89,7 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Account Type</InputLabel>
                     <Select
@@ -88,58 +105,9 @@ export default function SignUp() {
                     </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                    autoComplete="given-name"
-                    name="ABN"
-                    required
-                    fullWidth
-                    id="ABN"
-                    label="ABN"
-                    autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
+                {customerContentVisible && <CustomerForm />}
+                {tradieContentVisible && <TradieForm />}
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
