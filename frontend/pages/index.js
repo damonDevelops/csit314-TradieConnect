@@ -14,7 +14,11 @@ export default function Index() {
           Material UI - Next.js example
         </Typography>
         <Link href="/about" color="secondary">
-          Go to the about page
+          Go to the Sign In page
+        </Link>
+        <br />
+        <Link href="/SignUp" color="secondary">
+          Go to the Sign Up page
         </Link>
         <ProTip />
         <Copyright />
