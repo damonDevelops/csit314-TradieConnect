@@ -20,6 +20,9 @@ export default function Index() {
         <Link href="/SignUp" color="secondary">
           Go to the Sign Up page
         </Link>
+        <Link href="/Dashboard" color="secondary">
+          Go to the Dashboard
+        </Link>
         <ProTip />
         <Copyright />
       </Box>
