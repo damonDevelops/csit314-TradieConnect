@@ -1,7 +1,7 @@
 //import statements
 import { useEffect, useState } from "react";
-import TradieForm from "../components/TradieForm";
-import CustomerForm from "../components/CustomerForm";
+import TradieForm from "../../components/TradieForm";
+import CustomerForm from "../../components/CustomerForm";
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
