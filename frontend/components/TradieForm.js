@@ -33,7 +33,7 @@ export default function TradieForm() {
 
     // API endpoint where we send form data.
 
-    const endpoint = `http://localhost:8080/api/customers`;
+    const endpoint = `http://localhost:8080/api/service-providers`;
 
     // Form the request for sending data to the server.
     const options = {
@@ -47,19 +47,15 @@ export default function TradieForm() {
       body: JSONdata,
     };
 
-    // // Send the form data to our forms API on Vercel and get a response.
-    // const response = await fetch(endpoint, options);
+    console.log("Sending data to server");
 
-    // // Get the response data from server as JSON.
-    // // If server returns the name submitted, that means the form works.
-    // const result = await response.json();
+    // Send the form data to our forms API on Vercel and get a response.
+    const response = await fetch(endpoint, options);
 
-    alert(JSONdata);
-
-    {
-      /* uncomment below line to redirect to Dashboard */
+    if (response.status == 200) {
+      console.log("Success");
+      window.location.href = "../Service-Provider/Dashboard";
     }
-    //window.location.href = "../Customer/Dashboard";
   };
 
   return (
