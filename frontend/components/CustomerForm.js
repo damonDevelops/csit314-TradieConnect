@@ -20,6 +20,7 @@ export default function TradieForm() {
     const returnData = {
       firstName: event.target.firstName.value,
       lastName: event.target.lastName.value,
+      abn: event.target.abn.value,
       email: event.target.email.value,
       password: event.target.password.value,
       phoneNumber: event.target.phoneNumber.value,
@@ -45,19 +46,15 @@ export default function TradieForm() {
       body: JSONdata,
     };
 
-    // // Send the form data to our forms API on Vercel and get a response.
-    // const response = await fetch(endpoint, options);
+    console.log("Sending data to server");
 
-    // // Get the response data from server as JSON.
-    // // If server returns the name submitted, that means the form works.
-    // const result = await response.json();
+    // Send the form data to our forms API on Vercel and get a response.
+    const response = await fetch(endpoint, options);
 
-    alert(JSONdata);
-
-    {
-      /* uncomment below line to redirect to Dashboard */
+    if (response.status == 200) {
+      console.log("Success");
+      window.location.href = "../Customer/Dashboard";
     }
-    //window.location.href = "../Customer/Dashboard";
   };
 
   return (
