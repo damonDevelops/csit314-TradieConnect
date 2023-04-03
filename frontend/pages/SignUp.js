@@ -1,7 +1,7 @@
+//import statements
 import { useEffect, useState } from "react";
 import TradieForm from "../components/TradieForm";
 import CustomerForm from "../components/CustomerForm";
-
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -21,6 +21,7 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
+//returns the copyright section at the bottom of the page
 function Copyright(props) {
   return (
     <Typography
@@ -39,14 +40,19 @@ function Copyright(props) {
   );
 }
 
+//creates constant theme
 const theme = createTheme();
 
+//sign up function
 export default function SignUp() {
+  //state variables for account
   const [account_type, setAccountType] = React.useState("");
 
+  //state variables for content visibility
   const [customerContentVisible, setCustomerContentVisible] = useState(false);
   const [tradieContentVisible, setTradieContentVisible] = useState(false);
 
+  //useEffect to set content visibility
   useEffect(() => {
     account_type === "Customer"
       ? setCustomerContentVisible(true)
@@ -56,10 +62,12 @@ export default function SignUp() {
       : setTradieContentVisible(false);
   }, [account_type]);
 
+  //handles change in account type to display different data to tradie or customer
   const handleChange = (event) => {
     setAccountType(event.target.value);
   };
 
+  //handles submit of form
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -69,6 +77,7 @@ export default function SignUp() {
     });
   };
 
+  //returns the sign up page
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
