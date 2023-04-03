@@ -14,22 +14,6 @@ export default function TradieForm() {
   const [address, setAddress] = useState("");
 
   const handleSubmit = async (event) => {
-    // alert(
-    //   "Data submitted: " +
-    //     firstName +
-    //     "\n" +
-    //     lastName +
-    //     "\n" +
-    //     email +
-    //     "\n" +
-    //     phoneNumber +
-    //     "\n" +
-    //     password +
-    //     "\n" +
-    //     address +
-    //     "\n"
-    // );
-    // Stop the form from submitting and refreshing the page.
     event.preventDefault();
 
     // Get data from the form.
@@ -61,21 +45,19 @@ export default function TradieForm() {
       body: JSONdata,
     };
 
-    // Send the form data to our forms API on Vercel and get a response.
-    const response = await fetch(endpoint, options);
+    // // Send the form data to our forms API on Vercel and get a response.
+    // const response = await fetch(endpoint, options);
 
-    // Get the response data from server as JSON.
-    // If server returns the name submitted, that means the form works.
-    const result = await response.json();
-    alert(result);
+    // // Get the response data from server as JSON.
+    // // If server returns the name submitted, that means the form works.
+    // const result = await response.json();
 
-    // if (response.status == 201) {
-    //   setProduct("");
-    //   setPartName("");
-    //   setDescription("");
-    //   setManufacturer("");
-    //   setQuantity("");
-    // }
+    alert(JSONdata);
+
+    {
+      /* uncomment below line to redirect to Dashboard */
+    }
+    //window.location.href = "../Customer/Dashboard";
   };
 
   return (
