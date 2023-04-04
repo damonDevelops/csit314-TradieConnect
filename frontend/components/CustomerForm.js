@@ -20,7 +20,6 @@ export default function TradieForm() {
     const returnData = {
       firstName: event.target.firstName.value,
       lastName: event.target.lastName.value,
-      abn: event.target.abn.value,
       email: event.target.email.value,
       password: event.target.password.value,
       phoneNumber: event.target.phoneNumber.value,
