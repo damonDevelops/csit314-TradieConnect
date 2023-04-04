@@ -52,6 +52,8 @@ export default function SignUp() {
   const [customerContentVisible, setCustomerContentVisible] = useState(false);
   const [tradieContentVisible, setTradieContentVisible] = useState(false);
 
+  const [data, setData] = useState([]);
+
   //useEffect to set content visibility
   useEffect(() => {
     account_type === "Customer"
@@ -65,16 +67,6 @@ export default function SignUp() {
   //handles change in account type to display different data to tradie or customer
   const handleChange = (event) => {
     setAccountType(event.target.value);
-  };
-
-  //handles submit of form
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
   };
 
   //returns the sign up page
@@ -99,60 +91,30 @@ export default function SignUp() {
           <Typography component="h2" variant="h5">
             Sign Up
           </Typography>
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
-          >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">
-                    Account Type
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={account_type}
-                    label="Account Type"
-                    onChange={handleChange}
-                    required
-                  >
-                    <MenuItem value={"Customer"}>Customer</MenuItem>
-                    <MenuItem value={"Tradie"}>Tradie</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12}>
-                {customerContentVisible && <CustomerForm />}
-                {tradieContentVisible && <TradieForm />}
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I agree to the terms and conditions."
-                />
-              </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Account Type
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={account_type}
+                  label="Account Type"
+                  onChange={handleChange}
+                  required
+                >
+                  <MenuItem value={"Customer"}>Customer</MenuItem>
+                  <MenuItem value={"Tradie"}>Tradie</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign Up
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="/SignIn" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
+            <Grid item xs={12}>
+              {customerContentVisible && <CustomerForm />}
+              {tradieContentVisible && <TradieForm />}
             </Grid>
-          </Box>
+          </Grid>
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
